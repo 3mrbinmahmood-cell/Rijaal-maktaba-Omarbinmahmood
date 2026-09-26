@@ -37,3 +37,15 @@ Phase 1A and the raw occurrence layer are now implemented.
 - 27,402 distinct normalized **name strings** before identity resolution. This is intentionally not a narrator count.
 
 The next stage is identity resolution: clean raw mention phrases, preserve relational forms such as `أبيه`, match strong candidates against Shamela narrator IDs, and use surrounding teachers/students to resolve ambiguous short names.
+
+
+## Stage 3 checkpoint — kinship-safe identity resolution
+
+- Current anchored narrator identities: **2,969**
+- Strong/provisional resolved sanad occurrences: **39,578**
+- Contextually resolved kinship occurrences: **1,907**
+- New identities exposed by kinship expressions: **107**
+
+Kinship tokens such as `أبيه`, `جده`, `عمه`, `أخيه`, and `أمه` are resolved per occurrence from the governing narrator, lineage, biography, and sanad context. They are never treated as names or globally deduplicated.
+
+The core Tahdhib al-Kamal parser has also been corrected for vocalized/unvocalized `روى عن` forms and optional punctuation while preserving existing IDs.
