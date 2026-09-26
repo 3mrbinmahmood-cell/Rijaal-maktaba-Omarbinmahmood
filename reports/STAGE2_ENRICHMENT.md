@@ -62,3 +62,18 @@ The public Shamela 4 extraction documents:
 - **35,526 isnad records**
 
 The Shamela S1/reverse-engineered card set is locked as a primary identity seed. Our own stable narrator IDs remain canonical; Shamela IDs are retained as external cross-references.
+
+
+## Secondary core-source cross-reference
+
+Selected core rijal books were indexed separately. Page matches are stored as `candidate_page_match` evidence and are **not** automatically treated as identity proof or as an extracted judgment.
+
+Current card coverage:
+- Tahdhib al-Tahdhib (al-Risalah edition): **2,523** cards
+- al-Kashif: **1,219** cards
+- al-Tarikh al-Kabir of al-Bukhari: **1,018** cards
+- al-Isabah: **592** cards
+- Mizan al-I'tidal: **544** cards
+- cards with at least one secondary-source candidate page: **2,559 / 2,862**
+
+There are **8,177** retained source-page evidence rows. Entry-boundary verification and statement extraction will follow source by source.
