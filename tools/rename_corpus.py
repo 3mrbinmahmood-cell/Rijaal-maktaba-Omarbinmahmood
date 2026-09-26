@@ -7,13 +7,7 @@ Usage:
     python tools/rename_corpus.py "/path/to/sample library v 6 (2).zip" --output corpus
 """
 from __future__ import annotations
-import argparse
-import csv
-import hashlib
-import json
-import os
-import re
-import zipfile
+import argparse, csv, hashlib, json, os, re, zipfile
 from pathlib import Path
 
 def clean(text: str) -> str:
@@ -42,8 +36,7 @@ def main() -> None:
     args = p.parse_args()
     out = Path(args.output)
     out.mkdir(parents=True, exist_ok=True)
-    manifest = []
-    seen_sha = {}
+    manifest, seen_sha = [], {}
     with zipfile.ZipFile(args.zipfile) as zf:
         for info in zf.infolist():
             if info.is_dir():
@@ -58,6 +51,7 @@ def main() -> None:
             data = zf.read(info)
             sha = hashlib.sha256(data).hexdigest()
             duplicate_of = seen_sha.get(sha)
+
             if duplicate_of is None:
                 dest = out / new_name
                 n = 2
@@ -67,8 +61,23 @@ def main() -> None:
                 dest.write_bytes(data)
                 seen_sha[sha] = dest.name
                 canonical = dest.name
+            elif kind == "standalone" and duplicate_of != new_name:
+                # Prefer a true root-level standalone book title as the canonical
+                # filename when the same bytes also appeared nested in another folder.
+                old = out / duplicate_of
+                target = out / new_name
+                if old.exists() and not target.exists():
+                    old.rename(target)
+                seen_sha[sha] = new_name
+                canonical = new_name
+                for row in manifest:
+                    if row["sha256"] == sha:
+                        row["canonical_filename"] = new_name
+                        row["duplicate_of"] = new_name
+                duplicate_of = ""
             else:
                 canonical = duplicate_of
+
             manifest.append({
                 "old_path": info.filename,
                 "book": book,
@@ -79,6 +88,7 @@ def main() -> None:
                 "size_bytes": len(data),
                 "sha256": sha,
             })
+
     (out / "rename_manifest.json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8"
     )
