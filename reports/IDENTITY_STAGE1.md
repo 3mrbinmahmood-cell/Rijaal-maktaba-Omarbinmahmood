@@ -55,3 +55,21 @@ The date field remains **evidence text**, not a normalized numeric date, until t
 4. Extract individual critic judgments without collapsing disagreement.
 5. Add structured death/birth/travel/ikhtilat/tadlis events.
 6. Match/import Shamela narrator IDs when the 18,989-record seed is available.
+
+
+## Relationship graph checkpoint
+
+From the current 2,862 anchored identities:
+
+- reported teacher/student relationships extracted from Tahdhib al-Kamal: **27,597**
+- bilateral relationships (teacher list and reverse student list both support the pair): **7,674**
+- teacher-list-only relationships: **9,073**
+- student-list-only relationships: **10,850**
+
+From the fixed hadith corpus, **2,994** narrator pairs currently have both endpoints strongly resolved. Of those, **2,654** are also present in the reported Tahdhib al-Kamal relationship graph, and **1,777** have bilateral reported support.
+
+A second resolver now uses the stable relationship graph. It promotes an ambiguous occurrence only when the resolved narrator before it is a reported student of exactly one candidate **and** the resolved narrator after it is a reported teacher of that same candidate.
+
+This added **257 strong graph-based occurrence resolutions** in the current pass.
+
+The strong/provisional resolved occurrence total is now **37,671**. Unresolved occurrences are intentionally retained for later passes rather than forced.
