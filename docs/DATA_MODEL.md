@@ -121,3 +121,95 @@ Order of operations:
 8. If identity remains uncertain, keep separate cards linked as possible duplicates rather than merging them.
 
 This prevents premature normalization of short names, kunyahs, relational expressions, and variant lineages from destroying evidence needed to identify the narrator.
+
+
+## Reader scope decision — no card deduplication required
+
+The reader project does **not** require a globally deduplicated narrator database.
+
+### Primary goal
+
+The reader serves the user's selected hadith library and helps a student understand **why a scholar may have graded a hadith sahih, hasan, or da'if** by exposing the evidence in the sanad visually.
+
+The production priority is therefore:
+
+1. preserve the user's selected hadith books;
+2. preserve every sanad and its exact wording;
+3. resolve each sanad occurrence to one or more source-backed rijal cards where possible;
+4. display the entire chain visually;
+5. display evidence on every narrator node and every narrator-to-narrator link;
+6. show existing scholar gradings separately from automated evidence analysis;
+7. leave unresolved or conflicting evidence visible rather than force a verdict.
+
+### Card model
+
+A narrator may have multiple cards from different source books.
+
+For example, one historical narrator may have:
+- a Shamela S1 card;
+- a Tahdhib al-Kamal card;
+- a Taqrib card;
+- a Tahdhib al-Tahdhib card;
+- an al-Kashif card;
+- a Tarikh al-Kabir card;
+- other source cards.
+
+These cards may be linked as `possible_same_person`, `same_person_supported`, or by a shared external ID, but the reader does not need to physically merge them.
+
+Each card retains:
+- source book;
+- source locator;
+- exact name/identity wording;
+- exact grading/judgment wording;
+- biography;
+- dates;
+- teachers;
+- students;
+- tadlis / ikhtilat evidence;
+- aliases;
+- source provenance.
+
+### Sanad node
+
+A visual sanad node points to the best-supported card or card cluster for that exact occurrence. Expanding the node shows all linked source cards/evidence.
+
+### Sanad edge
+
+Every narrator-to-narrator edge may show:
+- actual occurrence in the user's corpus;
+- reported teacher/student relationship;
+- explicit sama' / haddathana / akhbarana;
+- an'anah;
+- chronology;
+- known meeting/hearing evidence;
+- place/travel compatibility;
+- tadlis warning;
+- possible break;
+- uncertainty.
+
+### Scholar ruling vs analyzer
+
+The UI must distinguish:
+
+**Scholar's ruling**
+- e.g. Sahih / Hasan / Da'if
+- exact scholar/source
+- exact wording when available
+
+**Sanad evidence**
+- narrator judgments
+- continuity evidence
+- weak/unknown narrator
+- tadlis
+- ikhtilat
+- chronology
+- break/uncertain link
+
+**Automated explanation**
+- explains which stored evidence supports or challenges continuity/strength
+- does not replace the scholar's ruling
+- does not claim certainty where the evidence is incomplete
+
+### Storage policy
+
+Duplicate source cards are acceptable. Storage optimization is secondary to provenance and correctness. A separate future project may deduplicate/merge narrator identities if desired, without blocking the reader.
