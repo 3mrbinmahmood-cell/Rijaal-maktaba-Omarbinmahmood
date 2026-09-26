@@ -75,3 +75,29 @@ New strong occurrence resolutions:
 Current strong/provisional resolved occurrence count: **39,726**.
 
 After including these resolutions, the preliminary analyzer graph contains **9,264 resolved adjacent links**, including **6,669** supported by both reported teacher/student evidence and an observed corpus transmission. Fully identity-resolved branches increased to **268**.
+
+
+## Contextual canonical-prefix resolution
+
+Many corpus occurrences use a shortened but still multi-token name, e.g. a three- or four-token prefix of a longer canonical lineage.
+
+A prefix is eligible only when:
+1. it is at least three normalized tokens;
+2. it maps to exactly one current anchored identity;
+3. the occurrence is still unresolved;
+4. at least one adjacent resolved narrator independently confirms the candidate through the reported teacher/student graph.
+
+Results:
+- unique canonical prefixes available: **9,803**
+- new occurrence resolutions: **1,675**
+- one-sided relationship corroboration: **1,666**
+- two-sided relationship corroboration: **9**
+
+Current strong/provisional occurrence total: **40,426**.
+
+Updated preliminary analyzer:
+- resolved adjacent links: **9,978**
+- supported reported + observed links: **7,319**
+- fully identity-resolved branches: **283**
+
+The prefix itself is never treated as proof without sanad context.
