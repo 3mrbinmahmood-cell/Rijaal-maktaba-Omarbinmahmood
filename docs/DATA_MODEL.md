@@ -103,3 +103,21 @@ Example:
 means: first resolve `فلان بن محمد`; then identify **his father** from that narrator's lineage; then test that father against the fact that he is narrating from al-Zuhri. It does not mean "look up a narrator named أبيه".
 
 This relational-resolution step runs before final sanad continuity analysis.
+
+
+## Resolve before identity deduplication (locked rule)
+
+The project resolves narrator occurrences to **source-backed narrator cards before deduplicating identities**.
+
+Order of operations:
+
+1. Preserve every narrator occurrence exactly as it appears in its sanad.
+2. Find one or more candidate cards from Shamela S1 and the classical rijal sources.
+3. Create/retain a provisional card when a source biography exists, even if another card may later prove to be the same person.
+4. Resolve the occurrence using the exact sanad context: previous narrator, next narrator, kinship wording, teachers/students, dates, tabaqah, kunyah, lineage, places, and source evidence.
+5. Attach the occurrence to the best-supported card only when sufficiently resolved.
+6. After cards have accumulated their own source evidence and sanad occurrences, run identity deduplication across the **cards**, not across raw names.
+7. Merge two cards only when the combined evidence supports that they are the same historical person. Preserve all former card IDs as aliases/redirects and retain provenance.
+8. If identity remains uncertain, keep separate cards linked as possible duplicates rather than merging them.
+
+This prevents premature normalization of short names, kunyahs, relational expressions, and variant lineages from destroying evidence needed to identify the narrator.
