@@ -23,3 +23,17 @@ The original HTML contents are preserved unchanged; only filenames are normalize
 4. Match against Shamela narrator IDs where possible.
 5. Enrich narrator cards with names, grades, biography, dates, teachers, students, and sourced critic statements.
 6. Build the complete sanad graph and analyzer for continuity, breaks, weak/criticized narrators, and strength of each link.
+
+
+## Phase 1 status
+
+Phase 1A and the raw occurrence layer are now implemented.
+
+- 74 unique source HTML files inventoried.
+- 54,572 numbered body segments retained in the raw extraction database.
+- 40,334 primary-body sanad candidates identified.
+- 25,569 footnote blocks preserved separately for later takhrij-route extraction.
+- 197,493 raw narrator mentions extracted from current sanad candidates.
+- 27,402 distinct normalized **name strings** before identity resolution. This is intentionally not a narrator count.
+
+The next stage is identity resolution: clean raw mention phrases, preserve relational forms such as `أبيه`, match strong candidates against Shamela narrator IDs, and use surrounding teachers/students to resolve ambiguous short names.
