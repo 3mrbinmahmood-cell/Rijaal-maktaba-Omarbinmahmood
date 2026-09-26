@@ -59,3 +59,19 @@ The low fully-resolved count is intentional: unresolved names are not forced mer
 3. A reported teacher/student relationship, actual observed transmission, chronology, tadlis, and narrator criticism are separate evidence dimensions.
 4. Existing named-scholar hadith grades remain separate from automated sanad analysis.
 5. The Shamela 18,989-card seed remains a primary identity source and external-ID layer when imported.
+
+
+## Secondary alias resolution
+
+Secondary source headings produced **5,789 aliases unique within the current anchored identity set**.
+
+Aliases are not sufficient by themselves. An unresolved occurrence is promoted only when the unique alias is also corroborated by the actual sanad relationship graph.
+
+New strong occurrence resolutions:
+- one-sided teacher/student corroboration: **284**
+- two-sided corroboration: **7**
+- total: **291**
+
+Current strong/provisional resolved occurrence count: **39,726**.
+
+After including these resolutions, the preliminary analyzer graph contains **9,264 resolved adjacent links**, including **6,669** supported by both reported teacher/student evidence and an observed corpus transmission. Fully identity-resolved branches increased to **268**.
