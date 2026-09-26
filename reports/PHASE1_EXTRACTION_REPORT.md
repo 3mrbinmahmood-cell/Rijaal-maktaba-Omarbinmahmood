@@ -42,3 +42,48 @@ Important: `sanad_candidates` are deliberately conservative candidates. Ambiguou
 5. A candidate ending at a narrative boundary is not automatically treated as a complete isnad.
 6. Cases that later contain expressions such as `سمعت رسول الله` are flagged for extension review.
 7. The next phase creates raw narrator occurrences and route branches before Shamela-ID matching.
+
+
+## Phase 1B — raw narrator graph
+
+After atomic occurrence refinement:
+
+- Atomic narrator occurrences: **207,814**
+- Distinct normalized named strings: **26,584**
+- Raw narrator-to-narrator edge patterns: **75,065**
+- Concrete sanad edge evidence rows: **169,136**
+- Named→named raw edge patterns: **67,964**
+- Edge patterns supported by at least 2 distinct sanads: **16,940**
+- Edge patterns supported by at least 5 distinct sanads: **4,447**
+
+Examples among the strongest observed raw edges include `نافع → ابن عمر`, `معمر → الزهري`, `عكرمة → ابن عباس`, and `محمد بن جعفر → شعبة`.
+
+These remain **raw-name edges**, not resolved-person edges. Short names such as `سفيان`, `يحيى`, and `عبد الله` are not merged until identity context is available.
+
+### Reuse of earlier source warehouse
+
+The previous relationship graph is retained as an independent evidence layer:
+
+- teacher/student neighbor rows: **49,724**
+- source observations: **72,186**
+- teacher relations: **18,521**
+- student relations: **31,203**
+
+The older 664,308-entry full-name source index was also tested conservatively against current atomic names:
+
+- current distinct normalized strings: **26,584**
+- exact label matches in legacy source index: **7,191**
+- strings with exactly one matching legacy entry: **1,131**
+- strings matching multiple legacy entries: **6,060**
+- current named occurrences covered by an exact legacy label: **85,284 / 193,956**
+
+No legacy exact match is treated as a resolved identity automatically.
+
+## Next identity stage
+
+1. Import the 18,989 Shamela narrator seed when available.
+2. Match unique exact long/short names.
+3. Resolve ambiguous short names using the previous and next narrator in actual corpus isnads.
+4. Use death dates, teacher/student evidence, kunya, lineage, place, and source biography evidence as guards.
+5. Preserve unresolved and relational mentions such as `أبيه` until the parent identity is known.
+6. Convert raw-name edges into stable narrator-ID edges only after identity resolution.
