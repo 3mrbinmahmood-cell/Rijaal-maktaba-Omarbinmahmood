@@ -7,7 +7,7 @@ def main():
  CREATE TABLE resolved_sanad_edges_stage4(edge_id TEXT PRIMARY KEY,sanad_id TEXT,branch_hint INTEGER,from_occurrence_id TEXT,to_occurrence_id TEXT,student_anchor_id TEXT,teacher_anchor_id TEXT,transmission_term TEXT,reported_relationship_status TEXT,observed_pair_count INTEGER,chronology_status TEXT,tadlis_warning INTEGER,node_weakness_status TEXT,preliminary_continuity_status TEXT,evidence_json TEXT);
  CREATE INDEX idx_rse4_pair ON resolved_sanad_edges_stage4(student_anchor_id,teacher_anchor_id);
  CREATE TABLE resolved_sanad_branch_summary_stage4(sanad_id TEXT,branch_hint INTEGER,total_occurrences INTEGER,resolved_occurrences INTEGER,total_links INTEGER,resolved_links INTEGER,supported_links INTEGER,warning_links INTEGER,unresolved_links INTEGER,complete_identity_resolution INTEGER,PRIMARY KEY(sanad_id,branch_hint));""")
- good=('provisional_anchor','strong_context','strong_graph','strong_relational','strong_relational_named','strong_secondary_alias')
+ good=('provisional_anchor','strong_context','strong_graph','strong_relational','strong_relational_named','strong_secondary_alias','strong_unique_prefix')
  res={o:a for o,a in c.execute("select occurrence_id,anchor_id from occurrence_resolution_stage1 where status in (%s)"%(','.join('?'*len(good))),good)}
  reported={(s,t):st for s,t,te,se,st in c.execute('select * from reported_relationships_stage1')}
  observed={(s,t):n for s,t,n,ds in c.execute('select student_anchor_id,teacher_anchor_id,evidence_count,distinct_sanad_count from resolved_observed_relationships_stage1')}
