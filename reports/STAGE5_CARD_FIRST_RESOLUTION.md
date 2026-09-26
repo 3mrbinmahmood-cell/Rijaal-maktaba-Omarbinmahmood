@@ -32,11 +32,11 @@ After integrating one additional strict kinship resolution, provisional-card occ
 
 Current resolved narrator occurrences:
 
-- existing anchored cards: **47,568**
+- existing anchored cards: **47,565**
 - provisional source-backed cards: **5,060**
-- **total resolved to a card: 52,628**
+- **total resolved to a card: 52,625**
 
-Current unresolved narrator/relational occurrences: **148,532**.
+Current unresolved narrator/relational occurrences: **148,535**.
 
 These are occurrence counts, not unique-person counts.
 
@@ -116,3 +116,8 @@ The accepted rule now:
 6. otherwise leave `أبيه` unresolved.
 
 This intentionally resolves fewer kinship cases rather than risk mixing two fathers.
+
+
+## Audit note
+
+Three earlier occurrences classified by the raw extractor as `prophet_terminal` actually contain relational/narrator wording before the Prophet reference. They are excluded from the narrator resolved/unresolved denominator until the raw occurrence classifier is corrected. This is why the audited narrator-card total is 52,625 rather than the raw union count of 52,628.
