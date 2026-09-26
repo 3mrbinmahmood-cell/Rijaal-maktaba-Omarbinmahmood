@@ -85,3 +85,36 @@ The graph is evidence for the future sanad analyzer, not a final hadith grade.
 2. resolve repaired hidden terminal narrators;
 3. import the 18,989 Shamela S1 cards/IDs when the seed is available;
 4. only after occurrence resolution is much higher, deduplicate cards representing the same historical person.
+
+
+## Final audited Stage-6 breakdown
+
+Compared with the Stage-5 card map, Stage 6 adds **13,727 resolved narrator occurrences**:
+
+- unique 3+ token source-card prefix seeds: **9,571**
+- specific teacher/student-context resolutions: **4,114**
+- strict contextual father (`أبيه` / `أبي`) resolutions: **28**
+- repeated two-sided sanad-signature propagation: **14**
+
+Final identity occurrence count: **66,352 / 201,160 = 33.0%**.
+
+Remaining unresolved: **134,808**.
+
+The current resolved occurrences use **4,477 distinct cards before deduplication**:
+- 2,860 existing anchored cards
+- 1,617 provisional source-backed cards
+
+### Relationship-evidence tightening
+
+During audit, generic relationship keys were rejected. A teacher/student list match may not rely on a common form such as `عبد الله`, `سفيان`, or a bare `أبو سلمة`. The Stage-6 resolver now requires a sufficiently specific identity key such as person+father, person+father+grandfather, or a longer kunyah/nasab form.
+
+Experimental one-sided nisba matches (for example a bare `الزهري`) were discarded rather than integrated.
+
+### Terminal repair
+
+Of 6,654 raw occurrences previously tagged as Prophet terminals:
+- 4,736 are pure Prophet terminals
+- 759 contain a narrator followed by an actual Prophet terminal
+- 1,159 are narrator descriptions containing Prophet wording but are not Prophet terminals themselves
+
+A conservative first repair pass resolves **92 hidden narrator nodes** to existing/provisional cards. These are stored separately and are not added to the 201,160 denominator until the raw chain-node model is rebuilt.
