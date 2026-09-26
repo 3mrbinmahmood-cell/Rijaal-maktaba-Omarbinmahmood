@@ -81,3 +81,25 @@ The Shamela card seed and the classical-source extraction are complementary:
 - **Shamela S1**: fast candidate universe and stable external IDs.
 - **Fixed corpus**: determines which person a name means in each actual sanad.
 - **Tahdhib al-Kamal / other rijal books**: evidence, teachers/students, judgments, dates and conflict resolution.
+
+
+## Relational narrator expressions (hard rule)
+
+Expressions such as `أبيه`, `أبيها`, `أمه`, `جده`, `عمه`, `أخيه` are **not narrator identities** and must never be globally deduplicated.
+
+They are resolved per sanad occurrence:
+
+1. Preserve the exact relational expression in the raw sanad node.
+2. Determine the grammatically governing/immediately referenced narrator in that exact chain.
+3. Resolve that governing narrator first.
+4. Derive the claimed family relation from the governing narrator's full lineage/biography.
+5. Generate candidate relative identities only from that context.
+6. Verify the candidate against the surrounding sanad: previous/next narrator, reported teachers/students, actual corpus transmissions, dates/tabaqah, places, and biography evidence.
+7. If more than one candidate remains, keep the node unresolved/ambiguous; never substitute a person merely because another `أبيه` occurrence elsewhere resolved to him.
+8. Store both the original token (`أبيه`) and the resolved narrator ID, plus the derivation evidence.
+
+Example:
+`فلان بن محمد، عن أبيه، عن الزهري`
+means: first resolve `فلان بن محمد`; then identify **his father** from that narrator's lineage; then test that father against the fact that he is narrating from al-Zuhri. It does not mean "look up a narrator named أبيه".
+
+This relational-resolution step runs before final sanad continuity analysis.
